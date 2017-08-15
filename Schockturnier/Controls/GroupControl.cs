@@ -30,6 +30,10 @@ namespace Schockturnier.Controls
 
         private void ChangePlayerState()
         {
+            if (playersListView.SelectedItems.Count == 0)
+            {
+                return;
+            }
             var index = playersListView.SelectedItems[0].Index;
             if (index >= 0)
             {

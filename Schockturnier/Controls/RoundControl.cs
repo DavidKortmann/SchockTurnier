@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Diagnostics;
+using System.Drawing;
 using System.Windows.Forms;
 using Schockturnier.Data;
 
@@ -22,31 +24,31 @@ namespace Schockturnier.Controls
         
         private void RefreshGroups()
         {
-            var yOffset = 0;
-            var height = CalculateControlHeight();
+            var height = 300;
             foreach (var group in _round.Groups)
             {
                 var control = new GroupControl(group)
                 {
-                    Location = new Point(0, yOffset),
                     Height = height,
-                    Width = Width
+                    Width = CalculateWidth()
                 };
-                groupsPanel.Controls.Add(control);
-                yOffset += control.Height + Margin;
+                flowLayoutPanel.Controls.Add(control);
             }
         }
 
-        private int CalculateControlHeight()
+        private int CalculateWidth()
         {
-            var maxGroupCount = TurnamentContext.Instance.CurrentGame.CurrentModus.GroupCounts[0];
-            var sumMaring = (maxGroupCount - 1) * Margin;
-            return (Height - sumMaring) / maxGroupCount;
+            Debug.WriteLine("RoundControl: {0}", Width);
+            Debug.WriteLine("FlowPanel: {0}", flowLayoutPanel.Width);
+            Debug.WriteLine("Papa: {0}", Parent.Width);
+
+            Application.DoEvents();
+            return (flowLayoutPanel.Width / 4) - (5*3);
         }
 
         public int CalculateYOffset()
         {
-            var height = CalculateControlHeight();
+            var height = CalculateWidth();
             var maxGroupCount = TurnamentContext.Instance.CurrentGame.CurrentModus.GroupCounts[0];
             var roundGroupCount = _round.Groups.Count;
             return height / 2;

@@ -21,6 +21,7 @@ namespace Schockturnier.Data
         public List<Round> Rounds { get; set; }
         public List<Placement> Winners { get; set; }
         public Round ActiveRound => Rounds.SingleOrDefault(r => r.IsActive);
+        public bool IsFinished { get; set; }
 
         public void StartGame()
         {
@@ -50,13 +51,30 @@ namespace Schockturnier.Data
         {
             if (ActiveRound.IsFinal)
             {
+                HandlePlacements(player, !player.IsOut);
+            }
+            player.IsOut = !player.IsOut;
+        }
+
+        private void HandlePlacements(Player player, bool isOut)
+        {
+            if (isOut)
+            {
                 var playersLeftCount = Players.Count(p => !p.IsOut);
                 if (playersLeftCount <= 4)
                 {
-                    Winners.Insert(0, new Placement{Number = playersLeftCount, Player = player});
+                    Winners.Insert(0, new Placement {Player = player});
+                    if (playersLeftCount == 1)
+                    {
+                        OnGameFinished();
+                    }
                 }
             }
-            player.IsOut = !player.IsOut;
+            else
+            {
+                var index = Winners.FindIndex(w => w.Player.Name == player.Name);
+                Winners.RemoveAt(index);
+            }
         }
 
         private void SetModus()
@@ -110,6 +128,13 @@ namespace Schockturnier.Data
 
         private void OnGameFinished()
         {
+            IsFinished = true;
+            var placement = 1;
+            foreach (var winner in Winners)
+            {
+                winner.Number = placement;
+                placement++;
+            }
             GameFinished?.Invoke(this, EventArgs.Empty);
         }
     }

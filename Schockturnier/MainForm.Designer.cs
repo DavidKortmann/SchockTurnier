@@ -33,17 +33,13 @@
             this.newGameMenuStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.startTurnamentMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nextRoundMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.roundsPanel = new System.Windows.Forms.Panel();
-            this.placesPanel = new System.Windows.Forms.Panel();
-            this.placmentListView = new System.Windows.Forms.ListView();
-            this.placmentCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.nameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.roundPanel = new System.Windows.Forms.Panel();
             this.mainMenu.SuspendLayout();
-            this.placesPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenu
             // 
+            this.mainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(35)))), ((int)(((byte)(49)))));
             this.mainMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gameMenuStrip});
@@ -60,6 +56,7 @@
             this.newGameMenuStrip,
             this.startTurnamentMenuItem,
             this.nextRoundMenuItem});
+            this.gameMenuStrip.ForeColor = System.Drawing.Color.White;
             this.gameMenuStrip.Name = "gameMenuStrip";
             this.gameMenuStrip.Size = new System.Drawing.Size(44, 20);
             this.gameMenuStrip.Text = "Spiel";
@@ -85,61 +82,23 @@
             this.nextRoundMenuItem.Text = "Nächste Runde";
             this.nextRoundMenuItem.Click += new System.EventHandler(this.nextRoundMenuItem_Click);
             // 
-            // roundsPanel
+            // roundPanel
             // 
-            this.roundsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.roundPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.roundsPanel.Location = new System.Drawing.Point(9, 26);
-            this.roundsPanel.Margin = new System.Windows.Forms.Padding(2);
-            this.roundsPanel.Name = "roundsPanel";
-            this.roundsPanel.Size = new System.Drawing.Size(734, 751);
-            this.roundsPanel.TabIndex = 1;
-            // 
-            // placesPanel
-            // 
-            this.placesPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.placesPanel.Controls.Add(this.placmentListView);
-            this.placesPanel.Location = new System.Drawing.Point(748, 26);
-            this.placesPanel.Name = "placesPanel";
-            this.placesPanel.Size = new System.Drawing.Size(339, 751);
-            this.placesPanel.TabIndex = 6;
-            // 
-            // placmentListView
-            // 
-            this.placmentListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.placmentListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.placmentCol,
-            this.nameCol});
-            this.placmentListView.FullRowSelect = true;
-            this.placmentListView.Location = new System.Drawing.Point(0, 58);
-            this.placmentListView.MultiSelect = false;
-            this.placmentListView.Name = "placmentListView";
-            this.placmentListView.Size = new System.Drawing.Size(339, 693);
-            this.placmentListView.TabIndex = 3;
-            this.placmentListView.UseCompatibleStateImageBehavior = false;
-            this.placmentListView.View = System.Windows.Forms.View.Details;
-            // 
-            // placmentCol
-            // 
-            this.placmentCol.Text = "#";
-            this.placmentCol.Width = 80;
-            // 
-            // nameCol
-            // 
-            this.nameCol.Text = "Name";
-            this.nameCol.Width = 235;
+            this.roundPanel.Location = new System.Drawing.Point(12, 27);
+            this.roundPanel.Name = "roundPanel";
+            this.roundPanel.Size = new System.Drawing.Size(1075, 749);
+            this.roundPanel.TabIndex = 1;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(35)))), ((int)(((byte)(49)))));
             this.ClientSize = new System.Drawing.Size(1099, 788);
-            this.Controls.Add(this.placesPanel);
-            this.Controls.Add(this.roundsPanel);
+            this.Controls.Add(this.roundPanel);
             this.Controls.Add(this.mainMenu);
             this.MainMenuStrip = this.mainMenu;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -150,7 +109,6 @@
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
-            this.placesPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,10 +121,6 @@
         private System.Windows.Forms.ToolStripMenuItem newGameMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem startTurnamentMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nextRoundMenuItem;
-        private System.Windows.Forms.Panel roundsPanel;
-        private System.Windows.Forms.Panel placesPanel;
-        private System.Windows.Forms.ListView placmentListView;
-        private System.Windows.Forms.ColumnHeader placmentCol;
-        private System.Windows.Forms.ColumnHeader nameCol;
+        private System.Windows.Forms.Panel roundPanel;
     }
 }

@@ -51,6 +51,12 @@
     <Compile Include="ConfiguratePlayersForm.Designer.cs">
       <DependentUpon>ConfiguratePlayersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PlacementsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\PlacementsControl.Designer.cs">
+      <DependentUpon>PlacementsControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\RoundControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\GroupControl.resx">
       <DependentUpon>GroupControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\PlacementsControl.resx">
+      <DependentUpon>PlacementsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\RoundControl.resx">
       <DependentUpon>RoundControl.cs</DependentUpon>

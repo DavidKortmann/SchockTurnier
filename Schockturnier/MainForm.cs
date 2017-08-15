@@ -8,19 +8,16 @@ namespace Schockturnier
 {
     public partial class MainForm : Form
     {
-        private const int _margin = 10;
-        private const int _menuSize = 31;
         private FormWindowState _lastWindowState;
 
         public MainForm()
         {
             InitializeComponent();
             nextRoundMenuItem.Enabled = false;
-            placesPanel.Visible = false;
             _lastWindowState = WindowState;
 
             TurnamentContext.Instance.CurrentGame.GameFinished += CurrentGameOnGameFinished;
-            for (var index = 0; index < 48; index++)
+            for (var index = 0; index < 16; index++)
             {
                 var playerName = $"Spieler {index + 1}";
                 TurnamentContext.Instance.CurrentGame.Players.Add(new Player(playerName));
@@ -29,8 +26,15 @@ namespace Schockturnier
 
         private void CurrentGameOnGameFinished(object sender, EventArgs eventArgs)
         {
-            TurnamentContext.Instance.CurrentGame.Winners.ForEach(w => placmentListView.Items.Add(new ListViewItem(new []{$"{w.Number}. Platz", w.Player.Name})));
-            placesPanel.Visible = true;
+            roundPanel.Controls.Clear();
+            var control = new PlacementsControl
+            {
+                Dock = DockStyle.Fill,
+                Width = Width,
+                Height = Height
+            };
+            roundPanel.Controls.Add(control);
+            nextRoundMenuItem.Enabled = false;
         }
 
         private void newGameMenuStrip_Click(object sender, EventArgs e)
@@ -76,36 +80,18 @@ namespace Schockturnier
 
         private void RefreshRounds()
         {
-            roundsPanel.Controls.Clear();
-            var rowIndex = 0;
-            foreach (var round in TurnamentContext.Instance.CurrentGame.Rounds)
+            if (!TurnamentContext.Instance.CurrentGame.IsFinished)
             {
-                PrintRoundControl(round, rowIndex);
-                rowIndex++;
+                roundPanel.Controls.Clear();
+                var round = TurnamentContext.Instance.CurrentGame.ActiveRound;
+                var control = new RoundControl(round)
+                {
+                    Dock = DockStyle.Fill,
+                    Width = Width,
+                    Height = Height
+                };
+                roundPanel.Controls.Add(control);
             }
         }
-
-        private void PrintRoundControl(Round round, int rowIndex)
-        {
-            var width = GetRoundControlWidth();
-
-            var xOffSet = rowIndex * width;
-            var control = new RoundControl(round)
-            {
-                Location = new Point(xOffSet, 0),
-                Height = roundsPanel.Height,
-                Width = width
-            };
-            roundsPanel.Controls.Add(control);
-        }
-
-        private int GetRoundControlWidth()
-        {
-            var roundsCount = TurnamentContext.Instance.CurrentGame.CurrentModus.GroupCounts.Count;
-            var width = roundsPanel.Width / roundsCount;
-            return width;
-        }
-
-       
     }
 }
