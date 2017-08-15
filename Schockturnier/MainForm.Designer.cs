@@ -50,7 +50,7 @@
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
             this.mainMenu.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.mainMenu.Size = new System.Drawing.Size(1090, 24);
+            this.mainMenu.Size = new System.Drawing.Size(1099, 24);
             this.mainMenu.TabIndex = 0;
             this.mainMenu.Text = "menuStrip1";
             // 
@@ -90,10 +90,10 @@
             this.roundsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.roundsPanel.Location = new System.Drawing.Point(9, 33);
+            this.roundsPanel.Location = new System.Drawing.Point(9, 26);
             this.roundsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.roundsPanel.Name = "roundsPanel";
-            this.roundsPanel.Size = new System.Drawing.Size(725, 770);
+            this.roundsPanel.Size = new System.Drawing.Size(734, 751);
             this.roundsPanel.TabIndex = 1;
             // 
             // placesPanel
@@ -101,9 +101,9 @@
             this.placesPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.placesPanel.Controls.Add(this.placmentListView);
-            this.placesPanel.Location = new System.Drawing.Point(739, 33);
+            this.placesPanel.Location = new System.Drawing.Point(748, 26);
             this.placesPanel.Name = "placesPanel";
-            this.placesPanel.Size = new System.Drawing.Size(339, 770);
+            this.placesPanel.Size = new System.Drawing.Size(339, 751);
             this.placesPanel.TabIndex = 6;
             // 
             // placmentListView
@@ -118,7 +118,7 @@
             this.placmentListView.Location = new System.Drawing.Point(0, 58);
             this.placmentListView.MultiSelect = false;
             this.placmentListView.Name = "placmentListView";
-            this.placmentListView.Size = new System.Drawing.Size(339, 130);
+            this.placmentListView.Size = new System.Drawing.Size(339, 693);
             this.placmentListView.TabIndex = 3;
             this.placmentListView.UseCompatibleStateImageBehavior = false;
             this.placmentListView.View = System.Windows.Forms.View.Details;
@@ -137,7 +137,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1090, 813);
+            this.ClientSize = new System.Drawing.Size(1099, 788);
             this.Controls.Add(this.placesPanel);
             this.Controls.Add(this.roundsPanel);
             this.Controls.Add(this.mainMenu);
@@ -146,6 +146,8 @@
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
+            this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
             this.placesPanel.ResumeLayout(false);

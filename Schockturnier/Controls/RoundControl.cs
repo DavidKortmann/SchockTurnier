@@ -7,7 +7,7 @@ namespace Schockturnier.Controls
     public partial class RoundControl : UserControl
     {
         private readonly Round _round;
-        private const int Margin = 15;
+        private const int Margin = 0;
 
         public RoundControl(Round round)
         {

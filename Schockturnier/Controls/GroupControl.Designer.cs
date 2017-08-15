@@ -49,14 +49,16 @@
             this.playersListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.playersListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.playersListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.playerNameCol,
             this.playerIsOutCol});
             this.playersListView.FullRowSelect = true;
-            this.playersListView.Location = new System.Drawing.Point(0, 28);
+            this.playersListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.playersListView.Location = new System.Drawing.Point(60, 3);
             this.playersListView.MultiSelect = false;
             this.playersListView.Name = "playersListView";
-            this.playersListView.Size = new System.Drawing.Size(366, 130);
+            this.playersListView.Size = new System.Drawing.Size(303, 152);
             this.playersListView.TabIndex = 2;
             this.playersListView.UseCompatibleStateImageBehavior = false;
             this.playersListView.View = System.Windows.Forms.View.Details;
