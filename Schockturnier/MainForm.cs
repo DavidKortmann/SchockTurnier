@@ -37,7 +37,7 @@ namespace Schockturnier
             nextRoundMenuItem.Enabled = false;
         }
 
-        private void newGameMenuStrip_Click(object sender, EventArgs e)
+        private void playerAdministrationMenuStrip_Click(object sender, EventArgs e)
         {
             var form = new ConfiguratePlayersForm();
             form.Show();
@@ -52,6 +52,20 @@ namespace Schockturnier
         {
             TurnamentContext.Instance.CurrentGame.NextRound();
             RefreshRounds();
+        }
+
+        private void turnierLadenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                TurnamentContext.Instance.LoadGame(openFileDialog1.FileName);
+                TurnamentContext.Instance.CurrentGame.GameFinished += CurrentGameOnGameFinished;
+                playerAdministrationMenuStrip.Enabled = false;
+                startTurnamentMenuItem.Enabled = false;
+                nextRoundMenuItem.Enabled = true;
+                RefreshRounds();
+            }
         }
 
         private void MainForm_ResizeEnd(object sender, EventArgs e)
@@ -70,17 +84,28 @@ namespace Schockturnier
 
         private void StartTurnament()
         {
-            newGameMenuStrip.Enabled = false;
-            startTurnamentMenuItem.Enabled = false;
-            nextRoundMenuItem.Enabled = true;
-
-            TurnamentContext.Instance.CurrentGame.StartGame();
-            RefreshRounds();
+            if (TurnamentContext.Instance.CurrentGame.Players.Count > 12)
+            {
+                var result = saveFileDialog.ShowDialog();
+                if (result == DialogResult.OK && !string.IsNullOrEmpty(saveFileDialog.FileName))
+                {
+                    playerAdministrationMenuStrip.Enabled = false;
+                    startTurnamentMenuItem.Enabled = false;
+                    nextRoundMenuItem.Enabled = true;
+                    TurnamentContext.Instance.CurrentGame.StartGame(saveFileDialog.FileName);
+                    RefreshRounds();
+                }
+            }
+            else
+            {
+                MessageBox.Show(this, "Die mindestanzahl von 12 Spielern wurde nicht erreicht.", "Fehler!", MessageBoxButtons.OK);
+            }
+            
         }
 
         private void RefreshRounds()
         {
-            if (!TurnamentContext.Instance.CurrentGame.IsFinished)
+            if (!TurnamentContext.Instance.CurrentGame.IsFinished && TurnamentContext.Instance.CurrentGame.IsStarted)
             {
                 roundPanel.Controls.Clear();
                 var round = TurnamentContext.Instance.CurrentGame.ActiveRound;
@@ -93,5 +118,7 @@ namespace Schockturnier
                 roundPanel.Controls.Add(control);
             }
         }
+
+        
     }
 }

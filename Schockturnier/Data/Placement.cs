@@ -1,5 +1,8 @@
-﻿namespace Schockturnier.Data
+﻿using System;
+
+namespace Schockturnier.Data
 {
+    [Serializable]
     public class Placement
     {
         public int Number { get; set; }

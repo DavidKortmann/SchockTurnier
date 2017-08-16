@@ -41,6 +41,10 @@ namespace Schockturnier
         {
             Close();
         }
+        private void removeButton_Click(object sender, EventArgs e)
+        {
+            DeletePlayer();
+        }
 
         private void AddPlayer()
         {
@@ -69,16 +73,6 @@ namespace Schockturnier
             {
                 TurnamentContext.Instance.CurrentGame.Players.RemoveAt(index);
                 playersListBox.Items.RemoveAt(index);
-            }
-        }
-
-        private void generateRandomButton_Click(object sender, EventArgs e)
-        {
-            for (var index = 0; index < 16; index++)
-            {
-                var playerName = $"Spieler {index + 1}";
-                TurnamentContext.Instance.CurrentGame.Players.Add(new Player(playerName));
-                playersListBox.Items.Add(playerName);
             }
         }
     }

@@ -33,9 +33,9 @@
             this.AddPlayerButton = new System.Windows.Forms.Button();
             this.playersListBox = new System.Windows.Forms.ListBox();
             this.okayButton = new System.Windows.Forms.Button();
-            this.generateRandomButton = new System.Windows.Forms.Button();
             this.playersListBoxContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeButton = new System.Windows.Forms.Button();
             this.playersListBoxContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,20 +43,18 @@
             // 
             this.playerNameTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.playerNameTextbox.Location = new System.Drawing.Point(13, 18);
-            this.playerNameTextbox.Margin = new System.Windows.Forms.Padding(4);
+            this.playerNameTextbox.Location = new System.Drawing.Point(10, 15);
             this.playerNameTextbox.Name = "playerNameTextbox";
-            this.playerNameTextbox.Size = new System.Drawing.Size(521, 22);
+            this.playerNameTextbox.Size = new System.Drawing.Size(436, 20);
             this.playerNameTextbox.TabIndex = 0;
             this.playerNameTextbox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.playerNameTextbox_KeyUp);
             // 
             // AddPlayerButton
             // 
             this.AddPlayerButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddPlayerButton.Location = new System.Drawing.Point(542, 15);
-            this.AddPlayerButton.Margin = new System.Windows.Forms.Padding(4);
+            this.AddPlayerButton.Location = new System.Drawing.Point(452, 13);
             this.AddPlayerButton.Name = "AddPlayerButton";
-            this.AddPlayerButton.Size = new System.Drawing.Size(100, 28);
+            this.AddPlayerButton.Size = new System.Drawing.Size(75, 23);
             this.AddPlayerButton.TabIndex = 1;
             this.AddPlayerButton.Text = "Anmelden";
             this.AddPlayerButton.UseVisualStyleBackColor = true;
@@ -68,35 +66,22 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.playersListBox.FormattingEnabled = true;
-            this.playersListBox.ItemHeight = 16;
-            this.playersListBox.Location = new System.Drawing.Point(16, 54);
-            this.playersListBox.Margin = new System.Windows.Forms.Padding(4);
+            this.playersListBox.Location = new System.Drawing.Point(12, 44);
             this.playersListBox.Name = "playersListBox";
-            this.playersListBox.Size = new System.Drawing.Size(734, 436);
+            this.playersListBox.Size = new System.Drawing.Size(600, 355);
             this.playersListBox.TabIndex = 2;
             this.playersListBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.playersListBox_KeyUp);
             // 
             // okayButton
             // 
             this.okayButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.okayButton.Location = new System.Drawing.Point(633, 498);
-            this.okayButton.Margin = new System.Windows.Forms.Padding(4);
+            this.okayButton.Location = new System.Drawing.Point(523, 405);
             this.okayButton.Name = "okayButton";
-            this.okayButton.Size = new System.Drawing.Size(117, 34);
+            this.okayButton.Size = new System.Drawing.Size(88, 28);
             this.okayButton.TabIndex = 3;
             this.okayButton.Text = "Übernehmen";
             this.okayButton.UseVisualStyleBackColor = true;
             this.okayButton.Click += new System.EventHandler(this.okayButton_Click);
-            // 
-            // generateRandomButton
-            // 
-            this.generateRandomButton.Location = new System.Drawing.Point(650, 15);
-            this.generateRandomButton.Name = "generateRandomButton";
-            this.generateRandomButton.Size = new System.Drawing.Size(100, 28);
-            this.generateRandomButton.TabIndex = 4;
-            this.generateRandomButton.Text = "Random";
-            this.generateRandomButton.UseVisualStyleBackColor = true;
-            this.generateRandomButton.Click += new System.EventHandler(this.generateRandomButton_Click);
             // 
             // playersListBoxContextMenu
             // 
@@ -104,25 +89,35 @@
             this.playersListBoxContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteToolStripItem});
             this.playersListBoxContextMenu.Name = "playersListBoxContextMenu";
-            this.playersListBoxContextMenu.Size = new System.Drawing.Size(148, 30);
+            this.playersListBoxContextMenu.Size = new System.Drawing.Size(126, 26);
             // 
             // deleteToolStripItem
             // 
             this.deleteToolStripItem.Name = "deleteToolStripItem";
-            this.deleteToolStripItem.Size = new System.Drawing.Size(147, 26);
+            this.deleteToolStripItem.Size = new System.Drawing.Size(125, 22);
             this.deleteToolStripItem.Text = "Entfernen";
+            // 
+            // removeButton
+            // 
+            this.removeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.removeButton.Location = new System.Drawing.Point(533, 13);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(75, 23);
+            this.removeButton.TabIndex = 5;
+            this.removeButton.Text = "Entfernen";
+            this.removeButton.UseVisualStyleBackColor = true;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
             // ConfiguratePlayersForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(763, 545);
-            this.Controls.Add(this.generateRandomButton);
+            this.ClientSize = new System.Drawing.Size(620, 443);
+            this.Controls.Add(this.removeButton);
             this.Controls.Add(this.okayButton);
             this.Controls.Add(this.playersListBox);
             this.Controls.Add(this.AddPlayerButton);
             this.Controls.Add(this.playerNameTextbox);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ConfiguratePlayersForm";
             this.Text = "Spieler bearbeiten";
             this.Load += new System.EventHandler(this.ConfiguratePlayersForm_Load);
@@ -138,9 +133,9 @@
         private System.Windows.Forms.Button AddPlayerButton;
         private System.Windows.Forms.ListBox playersListBox;
         private System.Windows.Forms.Button okayButton;
-        private System.Windows.Forms.Button generateRandomButton;
         private System.Windows.Forms.ContextMenuStrip playersListBoxContextMenu;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripItem;
+        private System.Windows.Forms.Button removeButton;
     }
 }
 

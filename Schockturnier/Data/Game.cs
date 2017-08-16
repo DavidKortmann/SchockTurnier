@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml.Serialization;
 
 namespace Schockturnier.Data
 {
+    [Serializable]
     public class Game
     {
         public Game()
@@ -22,18 +26,49 @@ namespace Schockturnier.Data
         public List<Placement> Winners { get; set; }
         public Round ActiveRound => Rounds.SingleOrDefault(r => r.IsActive);
         public bool IsFinished { get; set; }
+        public bool IsStarted { get; set; }
 
-        public void StartGame()
+        private string _fullFileName;
+        public string FullFileName
         {
+            get => _fullFileName;
+            set
+            {
+                _fullFileName = value;
+                var file = new FileInfo(_fullFileName);
+                FilePath = file.DirectoryName;
+                FileName = file.Name;
+            }
+        }
+        private string FileName { get; set; }
+        private string FilePath { get; set; }
+
+        public void StartGame(string fullFileName)
+        {
+            FullFileName = fullFileName;
+            Save("Start");
             SetModus();
             CreateRound();
             CreateGroups();
             SpreadPlayers();
+            IsStarted = true;
+        }
+
+        public void Save(string sufix = "")
+        {
+            var formatter = new XmlSerializer(typeof(Game));
+            var fullFileName = Path.Combine(FilePath, $"{sufix} {FileName}");
+
+            using (Stream stream = new FileStream(fullFileName, FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                formatter.Serialize(stream, this);
+            }
         }
 
         public void NextRound()
         {
             var activeRound = Rounds.SingleOrDefault(r => r.IsActive);
+            Save($"Final {activeRound.Name}");
             if (activeRound != null && !activeRound.IsFinal)
             {
                 activeRound.IsActive = false;

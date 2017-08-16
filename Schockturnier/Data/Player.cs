@@ -1,7 +1,14 @@
-﻿namespace Schockturnier.Data
+﻿using System;
+
+namespace Schockturnier.Data
 {
+    [Serializable]
     public class Player
     {
+        public Player()
+        {
+        }
+
         public Player(string name)
         {
             Name = name;

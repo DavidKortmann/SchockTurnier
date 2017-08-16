@@ -39,7 +39,7 @@ namespace Schockturnier.Tests.Data
                 {
                     Sut.Players.Add(new Player($"Player {i + 1}"));
                 }
-                Sut.StartGame();
+                Sut.StartGame("");
 
                 var round = Sut.Rounds[0];
 
@@ -67,7 +67,7 @@ namespace Schockturnier.Tests.Data
                 {
                     Sut.Players.Add(new Player($"Player {i + 1}"));
                 }
-                Sut.StartGame();
+                Sut.StartGame("");
                 Sut.Rounds[0].Groups.ForEach(g => OutPlayers(g, 2));
                 Sut.NextRound();
 
@@ -97,7 +97,7 @@ namespace Schockturnier.Tests.Data
                 {
                     Sut.Players.Add(new Player($"Player {i + 1}"));
                 }
-                Sut.StartGame();
+                Sut.StartGame("");
                 Sut.Rounds[0].Groups.ForEach(g => OutPlayers(g, 2));
                 Sut.NextRound();
                 Sut.Rounds[1].Groups.ForEach(g => OutPlayers(g, 2));
@@ -124,7 +124,7 @@ namespace Schockturnier.Tests.Data
                 {
                     Sut.Players.Add(new Player($"Player {i + 1}"));
                 }
-                Sut.StartGame();
+                Sut.StartGame("");
                 Sut.Rounds[0].Groups.ForEach(g => OutPlayers(g, 2));
                 Sut.NextRound();
                 Sut.Rounds[1].Groups.ForEach(g => OutPlayers(g, 2));
