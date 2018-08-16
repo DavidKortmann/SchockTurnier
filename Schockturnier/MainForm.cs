@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 using Schockturnier.Controls;
 using Schockturnier.Data;
@@ -17,11 +16,11 @@ namespace Schockturnier
             _lastWindowState = WindowState;
 
             TurnamentContext.Instance.CurrentGame.GameFinished += CurrentGameOnGameFinished;
-            for (var index = 0; index < 16; index++)
-            {
-                var playerName = $"Spieler {index + 1}";
-                TurnamentContext.Instance.CurrentGame.Players.Add(new Player(playerName));
-            }
+            //for (var index = 0; index < 16; index++)
+            //{
+            //    var playerName = $"Spieler {index + 1}";
+            //    TurnamentContext.Instance.CurrentGame.Players.Add(new Player(playerName));
+            //}
         }
 
         private void CurrentGameOnGameFinished(object sender, EventArgs eventArgs)
@@ -84,7 +83,7 @@ namespace Schockturnier
 
         private void StartTurnament()
         {
-            if (TurnamentContext.Instance.CurrentGame.Players.Count > 12)
+            if (TurnamentContext.Instance.CurrentGame.Players.Count >= 12)
             {
                 var result = saveFileDialog.ShowDialog();
                 if (result == DialogResult.OK && !string.IsNullOrEmpty(saveFileDialog.FileName))
